@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { getAluno, getAlunos, createAluno } from './database.js';
-import dotenv from 'dotenv';
 
 const app = express();
 
@@ -28,6 +27,8 @@ app.get("/alunos", async (req, res, next) => {
         next(error); // Passa o erro para o middleware de tratamento de erros
     }
 });
+
+
 
 app.get("/aluno/:id", async (req, res, next) => {
     try {
@@ -59,6 +60,7 @@ app.use((err, req, res, next) => {
     });
 });
 
+
 app.listen(process.env.APP_PORT, () => {
-    console.log(`O servidor está executando na porta ${APP_PORT}`);
+    console.log(`O servidor está executando na porta ${process.env.APP_PORT}`);
 });

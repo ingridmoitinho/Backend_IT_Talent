@@ -9,7 +9,9 @@ const pool = mysql.createPool({
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_ROOT_PASSWORD,
     database: process.env.MYSQL_DATABASE,
+    connectTimeout: 60000, 
 }).promise();
+
 
 export async function getAlunos(){
     const result = await pool.query(`SELECT * FROM ALUNOS;`);
